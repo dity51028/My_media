@@ -6,17 +6,16 @@ import { fetchFromAPI } from "../utils/fetchFromAPI"
 
 const Feed = () => {
  
-  const [selectedCategory,setSelectedCategory]=useState('New');
-  const [videos,setVideos]=useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("New");
+  const [videos, setVideos] = useState(null);
 
   useEffect(() => {
-    fetchFromAPI(`search?part=snippet&q=${selectedCategory}`)
+    setVideos(null);
+
+    fetchFromAPI(`?part=snippet&q=${selectedCategory}`)
       .then((data) => setVideos(data.items))
-      .catch((error) => {
-        console.error('Error fetching videos:', error);
-        // Handle the error as needed
-      });
-  }, [selectedCategory]);
+    }, [selectedCategory]);
+
   
 
 
