@@ -6,11 +6,11 @@ import { fetchFromAPI } from "../utils/fetchFromAPI"
 
 const Feed = () => {
  
-  const [selectedCategory, setSelectedCategory] = useState("New");
-  const [videos, setVideos] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState('New');
+  const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    setVideos(null);
+    //setVideos(null);
 
     fetchFromAPI(`?part=snippet&q=${selectedCategory}`)
       .then((data) => setVideos(data.items))
