@@ -13,7 +13,11 @@ const Feed = () => {
     //setVideos(null);
 
     fetchFromAPI(`?part=snippet&q=${selectedCategory}`)
-      .then((data) => setVideos(data.items))
+      .then((data) =>{
+      console.log(data)
+      setVideos(data.contents)
+  })
+      
     }, [selectedCategory]);
 
   
@@ -34,7 +38,6 @@ const Feed = () => {
         Copyright 2022 My_med
       </Typography>
     </Box>
-
     <Box p={2} sx={{overflowY:'auto',height:"90vh",flex:2}}>
       <Typography variant="h4"
          mb={2} sx={{color:'white',fontWeight:"bold"}}>
@@ -42,7 +45,7 @@ const Feed = () => {
           videos
         </span>
       </Typography>
-      <Videos videos={[videos]}/>
+     <Videos videos={videos}/>
     </Box>
     </Stack>
   )
